@@ -28,6 +28,7 @@
       Backbone.history.route(route, _.bind(function(fragment) {
         var args = this._extractParameters(route, fragment);    
         if (this._runFilters(this.before, fragment, args)) {
+          args.shift();
           callback && callback.apply(this, args);
           this._runFilters(this.after, fragment, args);
           this.trigger.apply(this, ['route:' + name].concat(args));
